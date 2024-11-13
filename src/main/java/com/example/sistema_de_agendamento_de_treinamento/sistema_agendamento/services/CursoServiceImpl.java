@@ -15,23 +15,23 @@ import com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.rep
 @Service
 public class CursoServiceImpl implements CursoService {
 	private CursoRepository cursoRepository;
-	private ProfessorRepository ProfessorRepository;
+	private ProfessorRepository professorRepository;
 
 	public CursoServiceImpl(CursoRepository cursoRepository,
-			ProfessorRepository ProfessorRepository) {
+			ProfessorRepository professorRepository) {
 		this.cursoRepository = cursoRepository;
-		this.ProfessorRepository = ProfessorRepository;
+		this.professorRepository = professorRepository;
 	}
 
 	@Override
 	public Curso inserir(InsereCursoDTO curso) {
-		Professor prof = ProfessorRepository
-				.findById(curso.getProfessorId())
+		Professor prof = professorRepository.findById(curso.getProfessorId())
 				.orElseThrow(() -> new RegraNegocioException("Categoria não encontrada"));
 		Curso cursoObj = new Curso();
 		cursoObj.setNome(curso.getNome());
 		cursoObj.setCargaHoraria(curso.getCargaHoraria());
 		cursoObj.setProfessor(prof);
+		
 		return cursoRepository.save(curso);
 	}
 
