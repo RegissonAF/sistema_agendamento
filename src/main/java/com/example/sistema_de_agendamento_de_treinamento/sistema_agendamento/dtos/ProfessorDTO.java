@@ -1,7 +1,7 @@
 package com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.dtos;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
 import com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.models.Curso;
 
@@ -20,5 +20,5 @@ public class ProfessorDTO {
     private Long id;
     private LocalDateTime Data;
     private String Nome;
-    private ArrayList<Curso> Curso;
+    private List<Curso> Curso;
 }

@@ -32,5 +32,5 @@ public class Curso {
     @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "professor_id")
-    private List<Professor> Professores;
+    private Professor Professor;
 }

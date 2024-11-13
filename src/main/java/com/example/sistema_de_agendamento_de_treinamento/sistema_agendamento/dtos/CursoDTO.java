@@ -1,6 +1,6 @@
 package com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.dtos;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.models.Professor;
 
@@ -18,5 +18,5 @@ public class CursoDTO {
     private Long id;
     private String Nome;
     private int CargaHoraria;
-    private ArrayList<Professor> Professores;
+    private List<Professor> Professores;
 }
