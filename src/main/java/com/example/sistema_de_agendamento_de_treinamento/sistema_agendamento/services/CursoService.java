@@ -1,0 +1,5 @@
+package com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.services;
+
+import com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.models.Curso;
+import com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.dtos.CursoDTO;
+import java.util.List;
