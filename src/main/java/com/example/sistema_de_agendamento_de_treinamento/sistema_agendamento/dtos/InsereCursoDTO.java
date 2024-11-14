@@ -12,4 +12,5 @@ public class InsereCursoDTO {
     private String nome;
     private int cargaHoraria;
     private Integer professorId;
+    private String descricao;
 }
