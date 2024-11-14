@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class ProfessorDTO {
     @Id
     private Long id;
-    private LocalDateTime Data;
-    private String Nome;
-    private List<Curso> Curso;
+    private LocalDateTime data;
+    private String nome;
+    private List<Curso> curso;
 }

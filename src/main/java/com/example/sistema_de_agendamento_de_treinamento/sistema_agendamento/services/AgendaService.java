@@ -1,6 +1,7 @@
 package com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,11 @@ import com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.rep
 import com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.repositories.ProfessorRepository;
 
 @Service
-public class CursoServiceImpl implements CursoService {
+public class AgendaService implements CursoService {
 	private CursoRepository cursoRepository;
 	private ProfessorRepository professorRepository;
 
-	public CursoServiceImpl(CursoRepository cursoRepository,
+	public AgendaService(CursoRepository cursoRepository,
 			ProfessorRepository professorRepository) {
 		this.cursoRepository = cursoRepository;
 		this.professorRepository = professorRepository;
@@ -25,25 +26,35 @@ public class CursoServiceImpl implements CursoService {
 
 	@Override
 	public Curso inserir(InsereCursoDTO curso) {
-		Professor prof = professorRepository.findById(curso.getProfessorId())
-				.orElseThrow(() -> new RegraNegocioException("Categoria não encontrada"));
+		Professor prof = professorRepository.findById(curso.getProfessorId());
 		Curso cursoObj = new Curso();
 		cursoObj.setNome(curso.getNome());
 		cursoObj.setCargaHoraria(curso.getCargaHoraria());
 		cursoObj.setProfessor(prof);
 		
-		return cursoRepository.save(curso);
+		return cursoRepository.save(cursoObj);
 	}
 
 	@Override
 	public List<CursoDTO> listarTodos() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'listarTodos'");
+		List<Curso> cursos = cursoRepository.findAll();
+
+		return cursos.stream().map((Curso c) -> CursoDTO.builder()
+				.id(c.getId())
+				.nome(c.getNome())
+				.cargaHoraria(c.getCargaHoraria())
+				.build()).collect(Collectors.toList());
 	}
 
 	@Override
 	public CursoDTO buscarPorId(Long id) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+		Curso curso = cursoRepository.findById(id)
+				.orElseThrow(() -> new RegraNegocioException("Curso não encontrado"));
+		
+		return CursoDTO.builder()
+				.id(curso.getId())
+				.nome(curso.getNome())
+				.cargaHoraria(curso.getCargaHoraria())
+				.build();
 	}
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class InsereCursoDTO {
     private Long id;
-    private String Nome;
-    private int CargaHoraria;
+    private String nome;
+    private int cargaHoraria;
     private Integer professorId;
 }

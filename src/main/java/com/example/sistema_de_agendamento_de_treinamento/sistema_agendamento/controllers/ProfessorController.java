@@ -19,7 +19,7 @@ import com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.ser
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/curso")
+@RequestMapping("/api/professor")
 public class ProfessorController {
     @Autowired
     private ProfessorService professorService;

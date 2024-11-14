@@ -26,9 +26,9 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private LocalDateTime Data;
+    private LocalDateTime data;
     @Column(length = 200, nullable = false)
-    private String Nome;
+    private String nome;
     @OneToMany(mappedBy = "professor_id")
-    private List<Curso> Cursos;
+    private List<Curso> cursos;
 }

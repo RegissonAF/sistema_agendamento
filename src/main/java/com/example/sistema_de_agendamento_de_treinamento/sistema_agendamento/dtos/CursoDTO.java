@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class CursoDTO {
-
     private Long id;
-    private String Nome;
-    private int CargaHoraria;
-    private List<Professor> Professores;
+    private String nome;
+    private int cargaHoraria;
+    private List<Professor> professores;
+    private Integer professorId;
 }

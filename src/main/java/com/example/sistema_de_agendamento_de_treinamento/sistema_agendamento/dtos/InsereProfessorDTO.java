@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class InsereProfessorDTO {
     private Long id;
-    private LocalDateTime Data;
-    private String Nome;
+    private LocalDateTime data;
+    private String nome;
 }

@@ -18,19 +18,19 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Agenda {
     @Column(length = 200, nullable = false)
-    private String Nome;
+    private String nome;
     @Column(nullable = false)
-    private LocalDateTime Data;
+    private LocalDateTime data;
     @Column(nullable = false)
-    private LocalDateTime DataFim;
+    private LocalDateTime dataFim;
     @Column(nullable = false)
-    private String Cidade;
+    private String cidade;
     @Column(nullable = false)
-    private String UF;
+    private String uf;
     @Column(nullable = false)
-    private int CEP;
+    private int cep;
     @Column(nullable = true)
-    private String Descricao;
+    private String descricao;
     @Column(nullable = false)
-    private String Professor;
+    private String professor;
 }
