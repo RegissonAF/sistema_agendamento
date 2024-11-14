@@ -19,4 +19,5 @@ public class CursoDTO {
     private int cargaHoraria;
     private List<Professor> professores;
     private Integer professorId;
+    private String descricao;
 }

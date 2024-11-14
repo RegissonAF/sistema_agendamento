@@ -27,8 +27,9 @@ public class Curso {
     private String nome;
     @Column(nullable = false)
     private int cargaHoraria;
-    @Column(nullable = false)
     @ManyToOne
-    @JoinColumn(name = "professor_id")
+    @JoinColumn(name = "professor_id", nullable = false)
     private Professor professor;
+    @Column(length = 500)
+    private String descricao;
 }

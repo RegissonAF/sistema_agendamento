@@ -15,46 +15,47 @@ import com.example.sistema_de_agendamento_de_treinamento.sistema_agendamento.rep
 
 @Service
 public class AgendaService implements CursoService {
-	private CursoRepository cursoRepository;
-	private ProfessorRepository professorRepository;
+    private CursoRepository cursoRepository;
+    private ProfessorRepository professorRepository;
 
-	public AgendaService(CursoRepository cursoRepository,
-			ProfessorRepository professorRepository) {
-		this.cursoRepository = cursoRepository;
-		this.professorRepository = professorRepository;
-	}
+    public AgendaService(CursoRepository cursoRepository,
+                         ProfessorRepository professorRepository) {
+        this.cursoRepository = cursoRepository;
+        this.professorRepository = professorRepository;
+    }
 
-	@Override
-	public Curso inserir(InsereCursoDTO curso) {
-		Professor prof = professorRepository.findById(curso.getProfessorId());
-		Curso cursoObj = new Curso();
-		cursoObj.setNome(curso.getNome());
-		cursoObj.setCargaHoraria(curso.getCargaHoraria());
-		cursoObj.setProfessor(prof);
-		
-		return cursoRepository.save(cursoObj);
-	}
+    @Override
+    public Curso inserir(InsereCursoDTO curso) {
+        Professor prof = professorRepository.findById(curso.getProfessorId());
+        Curso cursoObj = new Curso();
+        cursoObj.setNome(curso.getNome());
+        cursoObj.setCargaHoraria(curso.getCargaHoraria());
+        cursoObj.setProfessor(prof);
+        cursoObj.setDescricao(curso.getDescricao());
+        
+        return cursoRepository.save(cursoObj);
+    }
 
-	@Override
-	public List<CursoDTO> listarTodos() {
-		List<Curso> cursos = cursoRepository.findAll();
+    @Override
+    public List<CursoDTO> listarTodos() {
+        List<Curso> cursos = cursoRepository.findAll();
 
-		return cursos.stream().map((Curso c) -> CursoDTO.builder()
-				.id(c.getId())
-				.nome(c.getNome())
-				.cargaHoraria(c.getCargaHoraria())
-				.build()).collect(Collectors.toList());
-	}
+        return cursos.stream().map((Curso c) -> CursoDTO.builder()
+                .id(c.getId())
+                .nome(c.getNome())
+                .cargaHoraria(c.getCargaHoraria())
+                .build()).collect(Collectors.toList());
+    }
 
-	@Override
-	public CursoDTO buscarPorId(Long id) {
-		Curso curso = cursoRepository.findById(id)
-				.orElseThrow(() -> new RegraNegocioException("Curso não encontrado"));
-		
-		return CursoDTO.builder()
-				.id(curso.getId())
-				.nome(curso.getNome())
-				.cargaHoraria(curso.getCargaHoraria())
-				.build();
-	}
+    @Override
+    public CursoDTO buscarPorId(Long id) {
+        Curso curso = cursoRepository.findById(id)
+                .orElseThrow(() -> new RegraNegocioException("Curso não encontrado"));
+
+        return CursoDTO.builder()
+                .id(curso.getId())
+                .nome(curso.getNome())
+                .cargaHoraria(curso.getCargaHoraria())
+                .build();
+    }
 }
